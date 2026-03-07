@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1565C0;
+  --accent: #E65100;
+  --success: #2E7D32;
+  --danger: #C62828;
+  --bg-main: #E3F0FF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Nunito', system-ui, sans-serif;
+  background: var(--bg-main);
+  color: #1a1a2e;
+  overflow-x: hidden;
+}
+
+/* Train track scrollbar */
+.train-track-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #1565C0 #C5DCF8;
+}
+
+.train-track-scroll:active {
+  cursor: grabbing;
+}
+
+.train-track-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.train-track-scroll::-webkit-scrollbar-track {
+  background: #C5DCF8;
+  border-radius: 3px;
+}
+
+.train-track-scroll::-webkit-scrollbar-thumb {
+  background: #1565C0;
+  border-radius: 3px;
+}
+
+/* Track background - railroad ties */
+.track-bg {
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 28px,
+      #b0c8e8 28px,
+      #b0c8e8 32px
+    ),
+    linear-gradient(180deg, #d0e8ff 0%, #b8d4f8 100%);
+}
+
+/* Carriage animations */
+@keyframes statusPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes trainRoll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-4px); }
+}
+
+.carriage-enter {
+  animation: slideIn 0.25s ease-out forwards;
+}
+
+/* Timeline indicator pulse */
+@keyframes timelinePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.timeline-indicator {
+  animation: timelinePulse 2s ease-in-out infinite;
+}
+
+/* Wheel spin animation */
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.wheel-spin {
+  animation: wheelSpin 3s linear infinite;
+}
+
+/* Task card dragging */
+.dragging {
+  opacity: 0.5;
+  cursor: grabbing !important;
+}
+
+.drag-over {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px #1565C0;
+}
+
+/* Done carriage */
+.carriage-done {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9) !important;
+  border-color: #2E7D32 !important;
+}
+
+/* Failed carriage */
+.carriage-failed {
+  background: linear-gradient(135deg, #ffebee, #ffcdd2) !important;
+  border-color: #C62828 !important;
+}
+
+/* Current carriage highlight */
+.carriage-current {
+  border-color: #E65100 !important;
+  box-shadow: 0 0 0 2px #E65100, 0 4px 16px rgba(230, 81, 0, 0.2) !important;
+}
+
+/* Button hit targets */
+.btn-touch {
+  min-width: 48px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Smooth transitions */
+.carriage-transition {
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Drop zone glow */
+@keyframes dropGlow {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(21, 101, 192, 0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(21, 101, 192, 0.8); }
+}
+
+.drop-zone-active {
+  animation: dropGlow 1s ease infinite;
+}
+
+/* Gap drop zone */
+.gap-drop-zone {
+  transition: width 0.2s ease, opacity 0.2s ease;
+}
+
+.gap-drop-zone.active {
+  width: 64px !important;
+}
