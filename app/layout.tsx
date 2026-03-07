@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React, { Suspense } from "react";
 import "./globals.css";
 import { AppProvider } from "@/lib/context";
 
