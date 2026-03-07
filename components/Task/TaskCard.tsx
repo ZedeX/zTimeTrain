@@ -27,7 +27,6 @@ export default function TaskCard({ task, isAssigned, onEdit }: Props) {
     <div className="relative">
       <div
         ref={setNodeRef}
-        style={style}
         {...listeners}
         {...attributes}
         className={`relative flex flex-col items-center gap-1 p-2 rounded-xl border-2 cursor-grab active:cursor-grabbing transition-all select-none
