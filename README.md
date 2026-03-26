@@ -48,10 +48,22 @@ npm run dev
 3. 在 Cloudflare Dashboard 创建 Pages 项目，连接 GitHub 仓库
 
 4. 配置构建设置：
-   - **Build command**: `npm run build`
-   - **Build output directory**: `.next`
+   - **Framework preset**: `Next.js (Static)` 或使用自定义
+   - **Build command**: `npm run pages:build`
+   - **Build output directory**: `.vercel/output/static`
 
 5. 在项目设置中绑定 D1 数据库，绑定名称为 `DB`
+
+6. （可选）绑定 Vercel KV 作为备用存储（需要配置 KV_REST_API_URL 和 KV_REST_API_TOKEN 环境变量）
+
+#### 本地部署测试
+```bash
+# 构建 Cloudflare Pages 兼容版本
+npm run pages:build
+
+# 预览构建结果
+npx wrangler pages dev .vercel/output/static --d1=DB
+```
 
 ## 🛠️ 技术栈
 
