@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages:deploy": "npm run build && npx wrangler pages deploy .next --project-name time-train"
   },
   "dependencies": {
     "next": "15.5.2",
