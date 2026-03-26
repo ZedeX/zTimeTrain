@@ -35,6 +35,8 @@ npm run dev
 
 ### 部署到 Cloudflare Pages
 
+#### 方式一：使用 Cloudflare Pages Dashboard（推荐）
+
 1. 在 Cloudflare 创建 D1 数据库：
    ```bash
    npx wrangler d1 create timetrain-db
@@ -48,11 +50,18 @@ npm run dev
 3. 在 Cloudflare Dashboard 创建 Pages 项目，连接 GitHub 仓库
 
 4. 配置构建设置：
+   - **Root directory**: （留空，不要填任何路径）
    - **Framework preset**: `Next.js`
    - **Build command**: `npm run build`
    - **Build output directory**: `.next`
 
-5. 在项目设置中绑定 D1 数据库，绑定名称为 `DB`
+5. 在项目设置中绑定 D1 数据库（Settings → Functions → D1 database bindings）：
+   - 点击 **Add binding**
+   - **Variable name** 输入：`DB`
+   - **D1 database** 选择：`timetrain-db`
+   - 点击 **Save**
+
+6. 重新触发部署
 
 ## 🛠️ 技术栈
 
