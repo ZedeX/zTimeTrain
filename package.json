@@ -34,7 +34,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
     "eslint": "^8",
-    "eslint-config-next": "15.0.3",
+    "eslint-config-next": "15.5.9",
     "wrangler": "^3.99.0",
     "@cloudflare/next-on-pages": "^1.13.5"
   }
