@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import dayjs from "dayjs";
 import { useApp } from "@/lib/context";
 import { useRouter } from "next/navigation";
+import ImportExport from "./ImportExport";
 
 export default function Header() {
   const { currentDate, setCurrentDate, canUndo, undo, completionRate } = useApp();
@@ -139,6 +140,9 @@ export default function Header() {
         </svg>
         <span className="hidden sm:inline">月历</span>
       </button>
+
+      {/* Import/Export button */}
+      <ImportExport />
     </header>
   );
 }

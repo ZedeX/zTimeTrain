@@ -17,6 +17,7 @@ import {
   loadPlan,
   savePlan,
   createDefaultPlan,
+  applySnapshot,
 } from "./storage";
 import {
   insertCarriageAt,
@@ -67,6 +68,9 @@ interface AppContextValue {
   // Stats
   completionRate: number | null; // null = not yet calculable
   allDone: boolean;
+
+  // Import/Export
+  saveFullState: (state: any) => void;
 }
 
 // ── Context ───────────────────────────────────────────────────
@@ -318,6 +322,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const allDone =
     taskCarriages.length > 0 && taskCarriages.every((c) => c.status === "done");
 
+  const saveFullState = useCallback((state: any) => {
+    applySnapshot(state);
+    setTasksState(state.tasks);
+    if (state.plans[currentDate]) {
+      setPlanState(state.plans[currentDate]);
+    }
+  }, [currentDate]);
+
   return (
     <AppContext.Provider
       value={{
@@ -343,6 +355,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         undo,
         completionRate,
         allDone,
+        saveFullState,
       }}
     >
       {children}

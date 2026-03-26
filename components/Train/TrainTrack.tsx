@@ -66,10 +66,10 @@ export default function TrainTrack() {
   const onMouseUp = () => { isDragging.current = false; };
 
   function getCarriageWidth() {
-    if (typeof window === "undefined") return 100;
-    if (window.innerWidth >= 1200) return 140;
-    if (window.innerWidth >= 768) return 120;
-    return 100;
+    if (typeof window === "undefined") return 90;
+    if (window.innerWidth >= 1200) return 120;
+    if (window.innerWidth >= 768) return 100;
+    return 90;
   }
 
   const taskMap = Object.fromEntries(tasks.map((t) => [t.id, t]));
@@ -109,6 +109,7 @@ export default function TrainTrack() {
                 task={carriage.taskId ? taskMap[carriage.taskId] ?? null : null}
                 isCurrent={idx === currentCarriageIdx}
                 currentTime={currentTime}
+                currentCarriageIdx={currentCarriageIdx}
               />
               {/* Gap after each carriage */}
               <CarriageGap

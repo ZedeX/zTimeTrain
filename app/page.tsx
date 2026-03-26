@@ -104,6 +104,16 @@ export default function HomePage() {
     <div className="flex flex-col h-screen overflow-hidden" style={{ background: "#E3F0FF" }}>
       <Header />
 
+      {/* Title and description */}
+      <div className="mx-4 mt-2 text-center">
+        <h1 className="text-xl font-bold text-gray-800" style={{ fontFamily: "'Baloo 2', sans-serif" }}>
+          时间小火车 TimeTrain
+        </h1>
+        <p className="text-sm text-gray-600 mt-1">
+          用火车的方式管理你的一天，让时间变得更有规律和乐趣
+        </p>
+      </div>
+
       <DndContext
         sensors={sensors}
         onDragStart={handleDragStart}

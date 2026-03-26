@@ -10,6 +10,7 @@ interface Props {
   task: Task | null;
   isCurrent: boolean;
   currentTime: string;
+  currentCarriageIdx: number;
 }
 
 export default function TrainCarriage({
@@ -18,6 +19,7 @@ export default function TrainCarriage({
   task,
   isCurrent,
   currentTime,
+  currentCarriageIdx,
 }: Props) {
   const { setCarriageStatus, deleteCarriage, plan } = useApp();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -55,7 +57,7 @@ export default function TrainCarriage({
         ref={setNodeRef}
         className={`relative flex-shrink-0 rounded-xl border-2 carriage-transition carriage-enter select-none
           ${bgClass}
-          w-[100px] h-[180px] sm:w-[120px] sm:h-[200px] lg:w-[140px] lg:h-[220px]
+          w-[90px] h-[180px] sm:w-[100px] sm:h-[200px] lg:w-[120px] lg:h-[220px]
         `}
         style={{ overflow: "visible" }}
       >
@@ -64,13 +66,18 @@ export default function TrainCarriage({
           <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl bg-orange-500 timeline-indicator" />
         )}
 
-        {/* Current time label */}
+        {/* Past time overlay */}
+        {!isCurrent && index < currentCarriageIdx && (
+          <div className="absolute inset-0 bg-white/30 rounded-xl pointer-events-none" />
+        )}
+
+        {/* Current time label with blinking colon */}
         {isCurrent && (
           <div
             className="absolute -top-7 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap z-10"
             style={{ fontFamily: "'Baloo 2', monospace" }}
           >
-            ⏱ {currentTime}
+            ⏱ {currentTime.replace(':', '<span class="animate-pulse">:</span>')}
           </div>
         )}
 
@@ -145,6 +152,7 @@ export default function TrainCarriage({
                   ? "bg-green-500 text-white"
                   : "bg-green-100 text-green-700 hover:bg-green-200"
               }`}
+              disabled={!isCurrent && index < currentCarriageIdx}
             >
               ✔
             </button>
@@ -155,6 +163,7 @@ export default function TrainCarriage({
                   ? "bg-red-500 text-white"
                   : "bg-red-100 text-red-600 hover:bg-red-200"
               }`}
+              disabled={!isCurrent && index < currentCarriageIdx}
             >
               ✖
             </button>
