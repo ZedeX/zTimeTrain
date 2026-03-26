@@ -127,3 +127,5 @@ MIT License
 ---
 
 Made with ❤️ for kids learning time management
+
+🚀 部署在 Cloudflare Pages
