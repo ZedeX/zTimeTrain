@@ -48,9 +48,10 @@ npm run dev
 3. 在 Cloudflare Dashboard 创建 Pages 项目，连接 GitHub 仓库
 
 4. 配置构建设置：
-   - **Framework preset**: `Next.js (Static)` 或使用自定义
+   - **Framework preset**: `None` 或 `Custom`
    - **Build command**: `npm run pages:build`
    - **Build output directory**: `.vercel/output/static`
+   - **Deploy command**: `echo "Deploy complete"` (如果必须填写)
 
 5. 在项目设置中绑定 D1 数据库，绑定名称为 `DB`
 
