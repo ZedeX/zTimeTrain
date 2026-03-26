@@ -6,10 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "pages:preview": "npx @cloudflare/next-on-pages preview",
-    "pages:deploy": "npm run pages:build && npx wrangler pages deploy .vercel/output/static"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "15.5.2",
@@ -37,7 +34,6 @@
     "postcss": "^8.4.39",
     "eslint": "^8",
     "eslint-config-next": "15.5.2",
-    "wrangler": "^3.99.0",
-    "@cloudflare/next-on-pages": "^1.13.5"
+    "wrangler": "^3.99.0"
   }
 }

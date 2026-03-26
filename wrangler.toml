@@ -8,6 +8,3 @@ ENVIRONMENT = "production"
 binding = "DB"
 database_name = "timetrain-db"
 database_id = "timetrain-db"
-
-[pages]
-project_name = "time-train"
